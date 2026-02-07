@@ -1348,9 +1348,9 @@ function Invoke-VulnerabilityRemediation {
         "RS_LAPTOP"       = @("Windows Update Aug 2024", "7-Zip", "DWM Info Disclosure", "Adobe XI EOL", "Notepad++", ".NET Framework Oct 2024")
     }
 
-    Write-Log "" "INFO"
+    Write-Log " " "INFO"
     Write-Log "Devices in scope: $($deviceMapping.Keys -join ', ')" "INFO"
-    Write-Log "" "INFO"
+    Write-Log " " "INFO"
 
     # ---- REGISTRY HARDENING ----
     if ($Mode -in @("All", "RegistryOnly")) {
@@ -1360,7 +1360,7 @@ function Invoke-VulnerabilityRemediation {
         Remediate-SpectreHyperV
         Remediate-DisableLanManNTLMv1
         Write-Log "===== PHASE 1 COMPLETE =====" "INFO"
-        Write-Log "" "INFO"
+        Write-Log " " "INFO"
     }
 
     # ---- PROTOCOL HARDENING ----
@@ -1370,7 +1370,7 @@ function Invoke-VulnerabilityRemediation {
         Remediate-Sweet32Ciphers
         Remediate-TLS10Disable
         Write-Log "===== PHASE 2 COMPLETE =====" "INFO"
-        Write-Log "" "INFO"
+        Write-Log " " "INFO"
     }
 
     # ---- SERVICE PATH FIXES ----
@@ -1380,7 +1380,7 @@ function Invoke-VulnerabilityRemediation {
         Remediate-VCRedistElevationOfPrivilege
         Remediate-AspNetCoreSecurityUpdate
         Write-Log "===== PHASE 3 COMPLETE =====" "INFO"
-        Write-Log "" "INFO"
+        Write-Log " " "INFO"
     }
 
     # ---- SOFTWARE AUDIT ----
@@ -1388,7 +1388,7 @@ function Invoke-VulnerabilityRemediation {
         Write-Log "===== PHASE 4: Software Version Audit =====" "INFO"
         $softwareResults = Test-SoftwareVersions
         Write-Log "===== PHASE 4 COMPLETE =====" "INFO"
-        Write-Log "" "INFO"
+        Write-Log " " "INFO"
     }
 
     # ---- EOL REMOVAL ----
@@ -1396,7 +1396,7 @@ function Invoke-VulnerabilityRemediation {
         Write-Log "===== PHASE 5: End-of-Life Software Removal =====" "INFO"
         $eolResults = Remove-EOLSoftware
         Write-Log "===== PHASE 5 COMPLETE =====" "INFO"
-        Write-Log "" "INFO"
+        Write-Log " " "INFO"
     }
 
     # ---- SUMMARY ----
